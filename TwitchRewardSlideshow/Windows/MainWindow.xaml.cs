@@ -117,8 +117,8 @@ namespace TwitchRewardSlideshow.Windows {
 
         private void ShowNextImage() {
             ImageBuffer buffer = App.config.Get<ImageBuffer>();
-            if (buffer.toCheckImages.Count == 0) return;
-            ImageInfo imageInfo = buffer.toCheckImages.Dequeue();
+            if (buffer.toCheckImagesQueue.Count == 0) return;
+            ImageInfo imageInfo = buffer.toCheckImagesQueue.Dequeue();
             try {
                 SetImagePreviewSource(imageInfo.downloadLink);
             } catch (Exception) {

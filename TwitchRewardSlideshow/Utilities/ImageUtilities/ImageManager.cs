@@ -90,8 +90,8 @@ namespace TwitchRewardSlideshow.Utilities.ImageUtilities {
 
         private static ImageInfo DequeueImage() {
             ImageBuffer buffer = App.config.Get<ImageBuffer>();
-            if (buffer.toCheckImages.Count == 0) return null;
-            ImageInfo info = buffer.toCheckImages.Dequeue();
+            if (buffer.toCheckImagesQueue.Count == 0) return null;
+            ImageInfo info = buffer.toCheckImagesQueue.Dequeue();
             App.config.Set(buffer);
             return info;
         }
@@ -118,8 +118,7 @@ namespace TwitchRewardSlideshow.Utilities.ImageUtilities {
                 else buffer.activeImages.Add(info);
             }
             Console.WriteLine("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"); //TODO En alguna otra parte salta error de set
-            App.config.Set(buffer);
-            adding = false;
+            if (App.config.Set(buffer)) adding = false;
         }
 
         public static void RejectImage() {
@@ -132,8 +131,8 @@ namespace TwitchRewardSlideshow.Utilities.ImageUtilities {
 
         private static ImageInfo DeleteImage() {
             ImageBuffer buffer = App.config.Get<ImageBuffer>();
-            if (buffer.toCheckImages.Count == 0) return null;
-            ImageInfo imageInfo = buffer.toCheckImages.Dequeue();
+            if (buffer.toCheckImagesQueue.Count == 0) return null;
+            ImageInfo imageInfo = buffer.toCheckImagesQueue.Dequeue();
             if (imageInfo.path != null) {
                 try {
                     File.Delete(imageInfo.path);

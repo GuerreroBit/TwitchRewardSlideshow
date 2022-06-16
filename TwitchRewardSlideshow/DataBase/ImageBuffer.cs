@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using SQLite;
 
-namespace TwitchRewardSlideshow.Configuration {
-    public class ImageBuffer : Configuration {
-        public Queue<ImageInfo> toCheckImagesQueue { get; set; } = new();
-        public Queue<ImageInfo> exclusiveImagesQueue { get; set; } = new();
+namespace TwitchRewardSlideshow.DataBase {
+    public class ImageBuffer {
+        public List<ImageInfo> toCheckImagesQueue { get; set; } = new();
+        public List<ImageInfo> exclusiveImagesQueue { get; set; } = new();
         public List<ImageInfo> activeImages { get; set; } = new();
         public List<ImageInfo> displayedImages { get; set; } = new();
         public List<ImageInfo> defaultImages { get; set; } = new();
@@ -25,6 +25,16 @@ namespace TwitchRewardSlideshow.Configuration {
         public string user { get; set; }
         public string rewardId { get; set; }
         public string redemptionId { get; set; }
+        
+        public bool toCheckImageQueue { get; set; }
+        public bool exclusiveImageQueue { get; set; }
+        public bool activeImage { get; set; }
+        public bool displayedImage { get; set; }
+        public bool defaultImage { get; set; }
+        public bool displayedDefaultImage { get; set; }
+        public bool isActiveExclusiveImage { get; set; }
+
+        public ImageInfo() {}
 
         public ImageInfo(bool exclusive, double totalActiveTime, string downloadLink) {
             this.exclusive = exclusive;

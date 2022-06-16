@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace TwitchRewardSlideshow.Configuration {
-    public class AppConfig : AppConfiguration.Configuration {
+    public class AppConfig : Configuration {
         public string imageFolder { get; set; } = string.Empty;
         public string defaultPosterFolder { get; set; } = string.Empty;
 

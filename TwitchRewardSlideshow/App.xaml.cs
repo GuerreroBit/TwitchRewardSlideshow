@@ -14,10 +14,14 @@ using TwitchLib.Client.Events;
 using TwitchLib.Client.Models;
 using TwitchLib.PubSub.Events;
 using TwitchRewardSlideshow.Configuration;
+using TwitchRewardSlideshow.DataBase;
 using TwitchRewardSlideshow.Utilities;
 using TwitchRewardSlideshow.Utilities.ImageUtilities;
 using TwitchRewardSlideshow.Windows;
 using Application = System.Windows.Application;
+using ConfigManager = TwitchRewardSlideshow.Configuration.ConfigManager;
+using ImageBuffer = TwitchRewardSlideshow.Configuration.ImageBuffer;
+using ImageInfo = TwitchRewardSlideshow.Configuration.ImageInfo;
 using Timer = System.Timers.Timer;
 
 namespace TwitchRewardSlideshow {
@@ -43,6 +47,10 @@ namespace TwitchRewardSlideshow {
             Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
             SetupConsole();
             SetupConfig();
+
+            ImageBufferManager imageBufferManager =
+                new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                                 devName, productName, "Configuration", "sqlite.db"));
 
             CheckUpdate();
 
@@ -203,8 +211,8 @@ namespace TwitchRewardSlideshow {
                 }
                 case "next": {
                     ImageBuffer buffer = config.Get<ImageBuffer>();
-                    if (buffer.toCheckImages.Count == 0) twitch.SendMesage("No hay más imagenes para comprobar");
-                    ImageInfo info = buffer.toCheckImages.Dequeue();
+                    if (buffer.toCheckImagesQueue.Count == 0) twitch.SendMesage("No hay más imagenes para comprobar");
+                    ImageInfo info = buffer.toCheckImagesQueue.Dequeue();
                     twitch.SendMesage($"La proxima imagen ({(info.exclusive ? "Exclusiva" : "No exclusiva")})" +
                                       $" es de {info.user} con link a {info.downloadLink}");
                     break;

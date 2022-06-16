@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using TwitchRewardSlideshow.Windows;
 
 namespace TwitchRewardSlideshow.Configuration {
-    public class TwitchConfig : AppConfiguration.Configuration {
+    public class TwitchConfig : Configuration {
         public string channelName { get; set; } = "Nombre exacto del canal";
 
         public string channelId { get; set; } = "https://www.streamweasels.com/tools/" +

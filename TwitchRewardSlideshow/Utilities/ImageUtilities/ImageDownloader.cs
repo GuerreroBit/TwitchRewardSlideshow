@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -51,9 +47,9 @@ namespace TwitchRewardSlideshow.Utilities.ImageUtilities {
 
         private static void SaveBuffer(ImageInfo imageInfo) {
             ImageBuffer imageBuffer = App.config.Get<ImageBuffer>();
-            Queue<ImageInfo> images = imageBuffer.toCheckImages;
+            Queue<ImageInfo> images = imageBuffer.toCheckImagesQueue;
             images.Enqueue(imageInfo);
-            imageBuffer.toCheckImages = images;
+            imageBuffer.toCheckImagesQueue = images;
             App.config.Set(imageBuffer);
         }
 
