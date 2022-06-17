@@ -14,7 +14,7 @@ namespace TwitchRewardSlideshow.Configuration {
         public ImageInfo activeExclusiveImage = null;
     }
 
-    public class ImageInfo : IComparable<ImageInfo> {
+    public class ImageInfo : IComparable<ImageInfo> { 
         [PrimaryKey] public string id => Path.GetFileName(path);
         [AutoIncrement] public int index { get; set; }
         public string path { get; set; }

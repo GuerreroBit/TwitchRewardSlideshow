@@ -5,8 +5,8 @@ using SQLite;
 
 namespace TwitchRewardSlideshow.DataBase {
     public class ImageBuffer {
-        public List<ImageInfo> toCheckImagesQueue { get; set; } = new();
-        public List<ImageInfo> exclusiveImagesQueue { get; set; } = new();
+        public Queue<ImageInfo> toCheckImagesQueue { get; set; } = new();
+        public Queue<ImageInfo> exclusiveImagesQueue { get; set; } = new();
         public List<ImageInfo> activeImages { get; set; } = new();
         public List<ImageInfo> displayedImages { get; set; } = new();
         public List<ImageInfo> defaultImages { get; set; } = new();

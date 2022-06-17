@@ -12,11 +12,6 @@ using TwitchRewardSlideshow.Configuration;
 
 namespace TwitchRewardSlideshow.Utilities.ImageUtilities {
     public class ImageDownloader {
-        private const int intSize = 4;
-        private static readonly byte[] gif = Encoding.ASCII.GetBytes("GIF");
-        private static readonly byte[] png = { 137, 80, 78, 71 };
-        private static readonly byte[] jpeg = { 255, 216, 255, 224 };
-        private static readonly byte[] jpeg2 = { 255, 216, 255, 225 };
 
         public static ImageSource BitmapFromUri(Uri source) {
             BitmapImage bitmap = new();

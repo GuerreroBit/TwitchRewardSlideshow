@@ -31,7 +31,7 @@ namespace TwitchRewardSlideshow {
     public partial class App : Application {
         public static Twitch twitch;
         public static ConfigManager config;
-        public static SQLiteConnection sqlite;
+        public static ImageBufferManager imageBufferManager;
         public static OBS obs;
 
         public const string devName = "GuerreroBit";
@@ -48,9 +48,8 @@ namespace TwitchRewardSlideshow {
             SetupConsole();
             SetupConfig();
 
-            ImageBufferManager imageBufferManager =
-                new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                                 devName, productName, "Configuration", "sqlite.db"));
+            imageBufferManager = new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                                                  devName, productName, "Configuration", "sqlite.db"));
 
             CheckUpdate();
 
