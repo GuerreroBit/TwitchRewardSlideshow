@@ -6,7 +6,7 @@ Small app for the streamer [ChardiTronic](https://www.twitch.tv/charditronic/)
 - OBS WebSockets
 - (StreamFX)
 
-# Comandos
+# Comandos (Para streamer y mods)
 ## Add
 - Añadir nueva imagen
 - ``!add [Reward title]:[link]``
@@ -19,3 +19,5 @@ Small app for the streamer [ChardiTronic](https://www.twitch.tv/charditronic/)
 ## Next
 - Ver cual es la siguiente imagen
 - ``!next``
+## Help
+- ``!help``
